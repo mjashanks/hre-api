@@ -36,7 +36,14 @@
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
-    "debugType": "portable"
+    "debugType": "portable",
+    "embed": [
+      "StaticFiles/index.html",
+      "StaticFiles/favicon.ico",
+      "StaticFiles/logo.png",
+      "StaticFiles/Scripts/app-bundle.js",
+      "StaticFiles/Scripts/vendor-bundle.js"
+    ]
   },
 
   "runtimeOptions": {
