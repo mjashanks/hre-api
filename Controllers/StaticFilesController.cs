@@ -5,6 +5,7 @@ using System.IO;
 using Hre.Api.Extensions;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.FileProviders;
 
 namespace Hre.Api.Controllers
 {
@@ -14,7 +15,8 @@ namespace Hre.Api.Controllers
 
         private byte[] GetResource(string key)
         {
-            var assembly = GetType().GetTypeInfo().Assembly;
+            var assembly = GetType().GetTypeInfo().Assembly;           
+
             var resourceStream = assembly.GetManifestResourceStream("hre-api.StaticFiles." + key);
             using (var reader = new BinaryReader(resourceStream))
             {
