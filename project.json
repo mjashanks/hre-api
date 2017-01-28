@@ -60,5 +60,14 @@
 
   "tooling": {
     "defaultNamespace": "Hre.Api"
-  }
+  },
+
+  "resource": [
+    "StaticFiles/index.html",
+    "StaticFiles/favicon.ico",
+    "StaticFiles/logo.png",
+    "StaticFiles/Scripts/app-bundle.js",
+    "StaticFiles/Scripts/vendor-bundle.js"
+    
+  ]
 }
