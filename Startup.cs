@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Hre.Api.Database;
 
-namespace hre_core
+namespace Hre.Api
 {
     public class Startup
     {

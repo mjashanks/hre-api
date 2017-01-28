@@ -9,12 +9,12 @@ namespace Hre.Api.Controllers
     public class ProfilePicController : Controller
     {       
         [HttpGet("{id}")]
-        public async Task<byte[]> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             using (var conn = await SqlConnectionFactory.Create())
             {
                 var profilePic = await conn.GetProfilePic(id);
-                return profilePic.Pic;
+                return File(profilePic.Pic, "image/jpeg");
             }
         }
 /*
