@@ -54,6 +54,7 @@
     "include": [
       "wwwroot",
       "**/*.cshtml",
+      "StaticFiles",
       "appsettings.json",
       "web.config"
     ]
