@@ -11,5 +11,22 @@
         {
             return str + " where " + clause;
         }
+
+        public static string AsContentType(this string ext)
+        {
+            switch (ext)
+            {
+                case "jpg":
+                    return "image/jpeg";
+                case "gif":
+                    return "image/gif";
+                case "png":
+                    return "image/png";
+                case "bmp":
+                    return "image/bmp";
+                default:
+                    return "image/jpg";
+            }
+        }
     }
 }

@@ -32,13 +32,14 @@ namespace Hre.Api.Database
 
         public static async Task<ProfilePicture> GetProfilePic(this SqlConnection c, int id)
         {
-            var pics = await c.QueryAsync<ProfilePicture>("select Id, ProfilePic as Pic from Users where Id = @Id", new { Id = id });
+            var pics = await c.QueryAsync<ProfilePicture>("select Id, ProfilePic as Pic, ProfilePicExtension as Extension from Users where Id = @Id", new { Id = id });
             return pics.FirstOrDefault();
         }
 
-        public static async Task SetProfilePic(this SqlConnection c, int id, byte[] pic)
+        public static async Task SetProfilePic(this SqlConnection c, int id, byte[] pic, string ext)
         {
-            await c.ExecuteAsync("update Users set ProfilePic = @pic where Id = @Id", new { Id = id, pic = pic });
+            await c.ExecuteAsync("update Users set ProfilePic = @pic, ProfilePicExtension=@ext where Id = @Id"
+                                , new { Id = id, pic = pic, ext=ext });
         }
     }
 }

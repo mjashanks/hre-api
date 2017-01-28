@@ -4,5 +4,6 @@
     {
         public int Id { get; set; }
         public byte[] Pic { get; set; }
+        public string Extension {get; set;}
     }
 }

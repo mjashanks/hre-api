@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Hre.Api.Database;
 using System.IO;
+using Hre.Api.Extensions;
 
 namespace Hre.Api.Controllers
 {
@@ -14,7 +15,7 @@ namespace Hre.Api.Controllers
             using (var conn = await SqlConnectionFactory.Create())
             {
                 var profilePic = await conn.GetProfilePic(id);
-                return File(profilePic.Pic, "image/jpeg");
+                return File(profilePic.Pic, profilePic.Extension.AsContentType());
             }
         }
 /*
@@ -33,6 +34,10 @@ namespace Hre.Api.Controllers
             var httpRequest = HttpContext.Request;
 
             var file = httpRequest.Form.Files[0];
+            var fileName = httpRequest.Form["filename"][0];
+
+            var ext = Path.GetExtension(fileName);
+
             var stream = file.OpenReadStream();
             var picByt = new byte[stream.Length];
 
@@ -43,7 +48,7 @@ namespace Hre.Api.Controllers
 
             using (var conn = await SqlConnectionFactory.Create())
             {
-                await conn.SetProfilePic(id, picByt);
+                await conn.SetProfilePic(id, picByt, ext);
             }
         }
 
