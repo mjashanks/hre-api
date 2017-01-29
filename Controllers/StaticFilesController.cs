@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+/*using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Hre.Api.Database;
 using System.IO;
@@ -42,4 +42,4 @@ namespace Hre.Api.Controllers
             return File(GetResource("Scripts."+ file), file.AsContentType());
         }
     }
-}
+}*/
